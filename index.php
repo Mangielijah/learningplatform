@@ -13,8 +13,9 @@
 </head>
 <body>
     <div class="container-fluid bg-primary text-white h-100">
-        <div class="row h-100">
+        <div class="row">
             <!-- Will Send info on the design of this page -->
+            <img src="images/login_signup.png" class="img-responsive mx-auto d-block" alt="">
         </div>
     </div>
 </body>
