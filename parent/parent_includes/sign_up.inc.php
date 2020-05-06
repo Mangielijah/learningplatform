@@ -28,6 +28,19 @@ if (isset($_POST['signup'])) {
 		header("Location:../sign_up.php? error=Invalid Email");
 	    exit();
 	}
+	elseif(strlen($pwd)<6){
+        
+        header("Location:../sign_up.php? error=password to short atleast 6 charecters");
+	    exit();
+	}
+	elseif(!preg_match("/^[0-9]*$/",$pwd)){
+       header("Location:../sign_up.php? error=password must include atleast one number");
+	    exit();
+	}
+	elseif(!preg_match("/^[a-zA-Z]*$/",$pwd)){
+       header("Location:../sign_up.php? error=password must include atleast one letter");
+	    exit();
+	}
 	elseif ($pwd !== $pwd2) {
 		header("Location:../sign_up.php? error=Wrong password");
 	    exit();
@@ -53,22 +66,42 @@ if (isset($_POST['signup'])) {
 		        exit();
 			}
 			else{
+                    $sql2 = "SELECT email FROM parents WHERE email = ?";
+		            $stmt2 = mysqli_stmt_init($conn);
+		            if (!mysqli_stmt_prepare($stmt2,$sql2)) {
+		            		header("Location:../sign_up.php?error=wrong email");
+		                    exit();
+		            }
+		            else{
+		            		mysqli_stmt_bind_param($stmt2,"s",$email);
+							mysqli_execute($stmt2);
+							mysqli_stmt_store_result($stmt2);
+							$resultcheck = mysqli_stmt_num_rows($stmt2);
 
-				// inserting user into database
-				
-				$sql = "INSERT INTO parents (firstName,lastName,email,phoneNumber,password) VALUES (?,?,?,?,?)";
-				$stmt = mysqli_stmt_init($conn);
-				 if (!mysqli_stmt_prepare($stmt,$sql)) {
-					header("Location:../sign_up.php?error=sql error");
-				    exit();
-				}
-					else{
-					$hashedpassword = password_hash($pwd, PASSWORD_DEFAULT);
-					mysqli_stmt_bind_param($stmt,"sssss",$firstName,$lastName,$email,$phoneNumber,$hashedpassword);
-					mysqli_stmt_execute($stmt);
-					header("Location:../sign_up.php?signup=SignUp Successful");
-		            exit();
-				}
+								if ($resultcheck > 0) {
+							header("Location:../sign_up.php?error=email already exist");
+					        exit();
+						}
+						else{
+
+								// inserting user into database
+							
+							$sql = "INSERT INTO parents (firstName,lastName,email,phoneNumber,password) VALUES (?,?,?,?,?)";
+							$stmt = mysqli_stmt_init($conn);
+							 if (!mysqli_stmt_prepare($stmt,$sql)) {
+								header("Location:../sign_up.php?error=sql error");
+							    exit();
+							}
+								else{
+								$hashedpassword = password_hash($pwd, PASSWORD_DEFAULT);
+								mysqli_stmt_bind_param($stmt,"sssss",$firstName,$lastName,$email,$phoneNumber,$hashedpassword);
+								mysqli_stmt_execute($stmt);
+								header("Location:../sign_up.php?signup=SignUp Successful");
+					            exit();
+							}
+						}
+		            }
+
 			}
 		}
 
