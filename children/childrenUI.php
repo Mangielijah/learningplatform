@@ -23,19 +23,19 @@
            <div class="row p-4">
                 <div class="col-md-4">
                     <div class="pray text-center  shadow-sm p-3 mb-5 bg-white rounded">
-                      <img src="images/new/cross.png" alt="image" height="120px"><br><br>
+                      <img src="../images/cross.png" alt="image" height="120px"><br><br>
                       <a href="#" class="btn btn-primary py-2 px-8">INCOMPLETED LESSON</a>
                     </div>
                 </div>
                    <div class="col-md-4">
                     <div class="pray text-center  shadow-sm p-3 mb-5 bg-white rounded">
-                      <img src="images/new/tick.webp" alt="image" height="120px"><br><br>
+                      <img src="../images/tick.webp" alt="image" height="120px"><br><br>
                       <a href="#" class="btn btn-primary py-2 px-8">COMPLETED LESSON</a>
                     </div>
                 </div>
                   <div class="col-md-4">
                     <div class="pray text-center  shadow-sm p-3 mb-5 bg-white rounded">
-                      <img src="images/new/qa.png" alt="image" height="120px"><br><br>
+                      <img src="../images/qa.png" alt="image" height="120px"><br><br>
                       <a href="#" class="btn btn-primary py-2 px-8">LESSON QUESTIONS</a>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                               <div class="card">
 
                     <div class="card-img">
-                         <img src="images/new/environment.jpg" alt="image" class="img-responsive p-4 " height="200">
+                         <img src="../images/environment.jpg" alt="image" class="img-responsive p-4 " height="200">
                     </div>
                     <div class="card-body">
                          <h3 class="card-title">Learn Environmental Skills</h3>
@@ -63,7 +63,7 @@
                               <div class="card">
 
                     <div class="card-img">
-                         <img src="images/new/thermometer.jpg" alt="image" class="img-responsive p-4 " height="200">
+                         <img src="../images/thermometer.jpg" alt="image" class="img-responsive p-4 " height="200">
                     </div>
                     <div class="card-body">
                          <h3 class="card-title">Health And-<br> Sanitation </h3>
@@ -77,7 +77,7 @@
                               <div class="card">
 
                     <div class="card-img">
-                         <img src="images/new/hd.jpg" alt="image" class="img-responsive p-4 " height="200">
+                         <img src="../images/hd.jpg" alt="image" class="img-responsive p-4 " height="200">
                     </div>
                     <div class="card-body">
                          <h3 class="card-title">Learn 3D Shapes-<br>And Figures</h3>
@@ -104,7 +104,7 @@
           			 	<div class="card">
 
           		<div class="card-img">
-          			<img src="images/8.webp" alt="image" class="img-responsive p-4 " height="200">
+          			<img src="../images/8.webp" alt="image" class="img-responsive p-4 " height="200">
           		</div>
           		<div class="card-body">
           			<h3 class="card-title">Sheep Farm Lengh & Mass</h3>
@@ -118,7 +118,7 @@
           			 	<div class="card">
 
           		<div class="card-img">
-          			<img src="images/new/sheep.jpg" alt="image" class="img-responsive p-4 " height="200">
+          			<img src="../images/sheep.jpg" alt="image" class="img-responsive p-4 " height="200">
           		</div>
           		<div class="card-body">
           			<h3 class="card-title">Sheep Farm Lengh & Mass</h3>
@@ -132,7 +132,7 @@
           			 	<div class="card">
 
           		<div class="card-img">
-          			<img src="images/new/hd.jpg" alt="image" class="img-responsive p-4 " height="200">
+          			<img src="../images/hd.jpg" alt="image" class="img-responsive p-4 " height="200">
           		</div>
           		<div class="card-body">
           			<h3 class="card-title">Sheep Farm Lengh & Mass</h3>
@@ -146,7 +146,7 @@
           			 	<div class="card">
 
           		<div class="card-img">
-          			<img src="images/new/maths.jpg" alt="image" class="img-responsive p-4 " height="200">
+          			<img src="../images/maths.jpg" alt="image" class="img-responsive p-4 " height="200">
           		</div>
           		<div class="card-body">
           			<h3 class="card-title">Learning To count</h3>
@@ -160,7 +160,7 @@
           			 	<div class="card">
 
           		<div class="card-img">
-          			<img src="images/new/Language.jpg" alt="image" class="img-responsive p-4 " height="200">
+          			<img src="../images/Language.jpg" alt="image" class="img-responsive p-4 " height="200">
           		</div>
           		<div class="card-body">
           			<h3 class="card-title">Language Skills</h3>
@@ -174,7 +174,7 @@
           			 	<div class="card">
 
           		<div class="card-img">
-          			<img src="images/new/music.jpg" alt="image" class="img-responsive p-4 " height="200">
+          			<img src="../images/music.jpg" alt="image" class="img-responsive p-4 " height="200">
           		</div>
           		<div class="card-body">
           			<h3 class="card-title">Music Skills</h3>
