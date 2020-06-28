@@ -1,0 +1,55 @@
+#title{
+	color: white;
+	font-size: 40px;
+}
+
+#myForm{
+	margin-top: 50px;
+	margin-left: -100px;
+	background-color: white;
+}
+
+.form-control{
+	color: #fff;
+	background: rgba(0, 0, 0, 0.32);
+	letter-spacing: 0.5px;
+	padding: 12px;
+    font-size: 18px;
+}
+
+#email{
+	height: 43px;
+	padding-bottom: 0px;
+	padding-top: 5px;
+	font-size: 18px;
+	letter-spacing: 0.5px;
+}
+
+.btn{
+	background-color: #45b6fe;
+	box-shadow: none;
+	width: 380px;
+}
+
+.btn:hover{
+    box-shadow: 0 20px 5px -10px #;
+    transform: translateY(5px);
+    background-color: #45b6fe;
+}
+
+/*responsive design*/
+@media(max-width: 1000px) {
+     #myForm{
+	margin-top: 70px;
+	margin-left: 30px;
+	}
+
+	#title{
+		margin-left: 180px; 
+		font-size: 40px;
+	}
+
+	.btn{
+		width: 225px;
+    }
+}
