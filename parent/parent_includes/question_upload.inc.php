@@ -9,6 +9,10 @@ if (isset($_POST['submit'])){
     if (isset($_POST['type'])&& $_POST['type']!=null) {
     	
     	$type = $_POST['type'];
+
+    	$timestamp = mktime();
+
+    	$question_content_id = $parent_id . $timestamp;
          
           // RECEIVING AND STORING VIDEO FILES
 	     if($type=="VIDEO") {
@@ -19,7 +23,7 @@ if (isset($_POST['submit'])){
 		        exit();
             }
             else{
-               
+            $status = $_POST['status'];  
             $name = $_FILES['video_file']['name'];
 			$size = $_FILES['video_file']['size'];
 			$fileType = $_FILES['video_file']['type'];
@@ -57,7 +61,7 @@ if (isset($_POST['submit'])){
 		           exit();
 				}
 				else{
-		            $sql = "INSERT INTO questions (parent_id,question_type,question_content,question_description) VALUES (?,?,?,?)";
+		            $sql = "INSERT INTO question_content (question_id,content,status,timestamp_id) VALUES (?,?,?,?)";
 
 					$stmt  = mysqli_stmt_init($conn);
 					 if (!mysqli_stmt_prepare($stmt,$sql)) {
@@ -66,12 +70,26 @@ if (isset($_POST['submit'])){
 						}
 						else{
 							
-							mysqli_stmt_bind_param($stmt,"ssss",$parent_id,$type,$name,$description);
+							mysqli_stmt_bind_param($stmt,"ssss",$question_content_id,$name,$status,$timestamp);
 							mysqli_stmt_execute($stmt);	
 						}
 					move_uploaded_file($tmp_name,$dir.$name);	
 				}
 			}
+  
+             $sql = "INSERT INTO questions (question_id,parent_id,question_type,question_description,status) VALUES (?,?,?,?,?)";
+
+			$stmt  = mysqli_stmt_init($conn);
+			if (!mysqli_stmt_prepare($stmt,$sql)) {
+				header("Location:../question_upload.php?Error=File Upload Error");
+				exit();
+			}
+			else{
+				
+				mysqli_stmt_bind_param($stmt,"sssss",$timestamp,$parent_id,$type,$description,$status);
+				mysqli_stmt_execute($stmt);	
+			}
+
 			header("Location:../question_upload.php?succes=Files Uploaded Succesfully");
 			exit();
             }
@@ -86,7 +104,7 @@ if (isset($_POST['submit'])){
 			    exit();
     	 	}
     	 	else{
-                
+            $status = $_POST['status'];   
             $name = $_FILES['image_file']['name'];
 			$size = $_FILES['image_file']['size'];
 			$fileType = $_FILES['image_file']['type'];
@@ -124,23 +142,36 @@ if (isset($_POST['submit'])){
 		           exit();
 				}
 				else{
-		            $sql = "INSERT INTO questions (parent_id,question_type,question_content,question_description) VALUES (?,?,?,?)";
+		            $sql = "INSERT INTO question_content (question_id,content,status,timestamp_id) VALUES (?,?,?,?)";
 
 					$stmt  = mysqli_stmt_init($conn);
-					 if (!mysqli_stmt_prepare($stmt,$sql)) {
-							header("Location:../question_upload.php?Error=File Upload Error");
-							exit();
-						}
-						else{
-							
-							mysqli_stmt_bind_param($stmt,"ssss",$parent_id,$type,$name,$description);
-							mysqli_stmt_execute($stmt);
-							
-						}
-					move_uploaded_file($tmp_name,$dir.$name);
-					
+					if (!mysqli_stmt_prepare($stmt,$sql)) {
+						header("Location:../question_upload.php?Error=File Upload Error");
+						exit();
+					}
+					else{
+						
+					mysqli_stmt_bind_param($stmt,"ssss",$question_content_id,$name,$status,$timestamp);
+					mysqli_stmt_execute($stmt);
+						
+					}
+					move_uploaded_file($tmp_name,$dir.$name);	
 				}
 			}
+
+            $sql = "INSERT INTO questions (question_id,parent_id,question_type,question_description,status) VALUES (?,?,?,?,?)";
+
+			$stmt  = mysqli_stmt_init($conn);
+			if (!mysqli_stmt_prepare($stmt,$sql)) {
+				header("Location:../question_upload.php?Error=File Upload Error");
+				exit();
+			}
+			else{
+				
+				mysqli_stmt_bind_param($stmt,"sssss",$timestamp,$parent_id, $type,$description,$status);
+				mysqli_stmt_execute($stmt);	
+			}
+
 			header("Location:../question_upload.php?succes=Files Uploaded Succesfully");
 			exit();
     	 	}
@@ -157,21 +188,24 @@ if (isset($_POST['submit'])){
 		    exit();
 	        }
 	        else{
+	        	$status = $_POST['status'];
 	            $description = $_POST['description'];
 				$Text = $_POST['text'];
 
-				$sql = "INSERT INTO questions(parent_id,question_type,question_content,question_description) VALUES (?,?,?,?)";
-
+				$sql = "INSERT INTO questions(question_id,parent_id,question_type,question_description,status) VALUES (?,?,?,?,?)";
+                $sql2 = "INSERT INTO question_content(question_id,content,status,timestamp_id) VALUES (?,?,?,?)";
 
 				$stmt  = mysqli_stmt_init($conn);
-				if (!mysqli_stmt_prepare($stmt,$sql)) {
+				$stmt2  = mysqli_stmt_init($conn);
+				if (!mysqli_stmt_prepare($stmt,$sql)||!mysqli_stmt_prepare($stmt2,$sql2)) {
 					header("Location:../question_upload.php?Error=Text Upload Error");
 					exit();
 				}
-				else{
-					
-				mysqli_stmt_bind_param($stmt,"ssss",$parent_id,$type,$Text,$description);
-				mysqli_stmt_execute($stmt);	
+				else{	
+				mysqli_stmt_bind_param($stmt,"sssss",$timestamp,$parent_id,$type,$description,$status);
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_bind_param($stmt2,"ssss",$question_content_id,$Text,$status,$timestamp);
+				mysqli_stmt_execute($stmt2);	
 				}
 				header("Location:../question_upload.php?succes=Uploaded Succesfully");
 				exit();
@@ -186,19 +220,24 @@ if (isset($_POST['submit'])){
            	header("Location:../question_upload.php?Error=Please Upload File(s) And Try Again");
 		    exit();
            }else{
+           	    $status = $_POST['status'];
                 $description = $_POST['description'];
 				$youtube_links = $_POST['Youtube_link'];
 
-				$sql = "INSERT INTO questions(parent_id,question_type,question_content,question_description) VALUES (?,?,?,?)";
+				$sql = "INSERT INTO questions(question_id,parent_id,question_type,question_description,status) VALUES (?,?,?,?,?)";
+				$sql2 = "INSERT INTO question_content (question_id,content,status,timestamp_id) VALUES (?,?,?,?)";
 				$stmt  = mysqli_stmt_init($conn);
-				if (!mysqli_stmt_prepare($stmt,$sql)) {
+				$stmt2  = mysqli_stmt_init($conn);
+				if (!mysqli_stmt_prepare($stmt,$sql)||!mysqli_stmt_prepare($stmt2,$sql2)) {
 				header("Location:../question_upload.php?Error=Text Upload Error");
 				exit();
 				}
 				else{
 					
-				mysqli_stmt_bind_param($stmt,"ssss",$parent_id,$type,$youtube_links,$description);
-				mysqli_stmt_execute($stmt);	
+				mysqli_stmt_bind_param($stmt,"sssss",$timestamp,$parent_id,$type,$description,$status);
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_bind_param($stmt2,"ssss",$question_content_id,$youtube_links,$status,$timestamp);
+				mysqli_stmt_execute($stmt2);	
 				}
 				header("Location:../question_upload.php?succes=Uploaded Succesfully");
 				exit();

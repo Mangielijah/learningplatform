@@ -20,6 +20,20 @@
 	<div class="container shadow-sm p-3 mb-5 bg-white rounded">
 		<h1 class="text-center text-primary">UPLOAD QUESTION</h1>
 		<p class="text-center text-success">Questions could be uploaded videos , pictures , text and Youtube links.</p>
+		<?php
+         if (isset($_GET['Error'])) {
+         	$Error = $_GET['Error'];
+         	?>
+               <h4 class="text-center text-danger"><?php echo $Error; ?></h4>
+         	<?php
+         }
+         if (isset($_GET['succes'])) {
+         	$succes = $_GET['succes'];
+         	?>
+               <h4 class="text-center text-success"><?php echo $succes; ?></h4>
+         	<?php
+         }
+		?>
 		<div class="row">
 			<div class="col-sm-12 p-4">
 
@@ -32,6 +46,7 @@
 					<h5 class="">Choose Question Upload Format</h5>
 					<div class="row">
 						   <input class="hide" type="text" name="type" id="type" value="IMAGE">
+						   <input class="hide" type="text" name="status"  value="UNANSWERED">
 						<div class="col-md-12">
 									
 				            <input class="active btn btn-primary" type="button" onclick="tabs(0);change('IMAGE');"  value="IMAGE">

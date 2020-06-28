@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Childrens Oage</title>
-
+<?php include '../includes/styles_js_importer.php'; ?>
 <!-- 	<link rel="stylesheet" type="text/css" href="../bootstrap-4.4.1-dist/css/bootstrap.min.css"> -->
 <!-- 	<link rel="stylesheet" type="text/css" href="index2.css"> -->
   <style type="text/css">
@@ -33,13 +33,13 @@
                    <div class="col-md-4">
                     <div class="pray text-center  shadow-sm p-3 mb-5 bg-white rounded">
                       <img src="../images/tick.webp" alt="image" height="120px"><br><br>
-                      <a href="#" class="btn btn-primary py-2 px-8">COMPLETED LESSON</a>
+                      <a href="lessons.php" class="btn btn-primary py-2 px-8"> LESSON</a>
                     </div>
                 </div>
                   <div class="col-md-4">
                     <div class="pray text-center  shadow-sm p-3 mb-5 bg-white rounded">
                       <img src="../images/qa.png" alt="image" height="120px"><br><br>
-                      <a href="#" class="btn btn-primary py-2 px-8">LESSON QUESTIONS</a>
+                      <a href="questions.php" class="btn btn-primary py-2 px-8">LESSON QUESTIONS</a>
                     </div>
                 </div>
            </div>
