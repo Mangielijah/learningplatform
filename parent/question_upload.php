@@ -41,7 +41,7 @@
          
 
 
-				<form class="md-form"  action="parent_includes/question_upload.inc.php" method="POST" enctype="multipart/form-data">
+				<form class="md-form"  action="includes/question_upload.inc.php" method="POST" enctype="multipart/form-data">
 					
 					<h5 class="">Choose Question Upload Format</h5>
 					<div class="row">

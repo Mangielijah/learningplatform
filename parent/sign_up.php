@@ -1,6 +1,6 @@
 <!DOCTYPE   html>
     <head>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <?php include '../includes/styles_js_importer.php'; ?>
     </head>
     <body>
       
@@ -26,7 +26,7 @@
                             Sign Up
                         </strong><br>
                          <small>Please fill in this form to create an account!</small><hr>
-                        <form   action="/action_page.php">
+                        <form method="post"  action="includes/sign_up.inc.php">
                             <div  class="row">
                             <div    class="col-sm-6">
                             <div    class="form-group">
@@ -41,6 +41,10 @@
                         <div    class="form-group">
                             <label  for="email">  Email address:</label>
                             <input  type="email" name="email" class="form-control" placeholder="Enter email"  id="email">
+                        </div>  
+                        <div    class="form-group">
+                            <label  for="number">  Phone number:</label>
+                            <input  type="text" name="phoneNumber" class="form-control" placeholder="Enter phone number"  id="phone number">
                         </div>  
                         <div  class="form-group">
                             <label  for="pwd">  Password:</label>

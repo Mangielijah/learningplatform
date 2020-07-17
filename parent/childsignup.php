@@ -10,7 +10,7 @@
                 <div    class="col-sm-4">
                     <div    class="jumbotron  bg-white  m-1">
                          <small>Please fill in this form to create an account for your child.</small><hr></p>
-                        <form name="" method="POST"  action="prototype2.php">
+                        <form name="" method="POST"  action="includes/childlogin.inc.php">
                             <div    class="form-group">
                                 <label  for="name"> Name:</label>
                                 <input  type="text"  class="form-control" placeholder="Enter name"  name="name">

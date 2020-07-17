@@ -33,11 +33,11 @@ if (isset($_POST['signup'])) {
         header("Location:../sign_up.php? error=password to short atleast 6 charecters");
 	    exit();
 	}
-	elseif(!preg_match("/^[0-9]*$/",$pwd)){
+	elseif(!preg_match("#[0-9]#", $pwd)){
        header("Location:../sign_up.php? error=password must include atleast one number");
 	    exit();
 	}
-	elseif(!preg_match("/^[a-zA-Z]*$/",$pwd)){
+	elseif(!preg_match("#[a-zA-Z]#",$pwd)){
        header("Location:../sign_up.php? error=password must include atleast one letter");
 	    exit();
 	}
@@ -96,7 +96,7 @@ if (isset($_POST['signup'])) {
 								$hashedpassword = password_hash($pwd, PASSWORD_DEFAULT);
 								mysqli_stmt_bind_param($stmt,"sssss",$firstName,$lastName,$email,$phoneNumber,$hashedpassword);
 								mysqli_stmt_execute($stmt);
-								header("Location:../sign_up.php?signup=SignUp Successful");
+								header("Location:../index.php?signup=SignUp Successful");
 					            exit();
 							}
 						}

@@ -41,7 +41,7 @@
          
 
 
-				<form class="md-form"  action="parent_includes/lesson_upload.inc.php" method="POST" enctype="multipart/form-data">
+				<form class="md-form"  action="includes/lesson_upload.inc.php" method="POST" enctype="multipart/form-data">
 					
 					<h5 class="">Choose Lesson Upload Format</h5>
 					<div class="row">
